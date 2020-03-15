@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlueTool", "BlueTool\BlueTool.csproj", "{C8B91770-CF6F-4EB0-AA9C-4D5F1C08D97A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C8B91770-CF6F-4EB0-AA9C-4D5F1C08D97A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8B91770-CF6F-4EB0-AA9C-4D5F1C08D97A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8B91770-CF6F-4EB0-AA9C-4D5F1C08D97A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8B91770-CF6F-4EB0-AA9C-4D5F1C08D97A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {54945853-D437-41B7-A6B4-4C6EDF6A3C19}
+	EndGlobalSection
+EndGlobal
