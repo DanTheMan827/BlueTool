@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonConnection = new System.Windows.Forms.Button();
@@ -38,6 +39,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelInfo = new System.Windows.Forms.Label();
             this.labelByLine = new System.Windows.Forms.Label();
+            this.timerConnection = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -67,13 +69,13 @@
             // buttonConnection
             // 
             this.buttonConnection.AutoSize = true;
-            this.buttonConnection.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonConnection.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonConnection.Location = new System.Drawing.Point(346, 5);
+            this.buttonConnection.Location = new System.Drawing.Point(320, 5);
             this.buttonConnection.Margin = new System.Windows.Forms.Padding(3, 2, 3, 3);
             this.buttonConnection.MaximumSize = new System.Drawing.Size(9999, 22);
             this.buttonConnection.Name = "buttonConnection";
-            this.buttonConnection.Size = new System.Drawing.Size(57, 22);
+            this.buttonConnection.Padding = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.buttonConnection.Size = new System.Drawing.Size(83, 22);
             this.buttonConnection.TabIndex = 0;
             this.buttonConnection.Text = "Connect";
             this.buttonConnection.UseVisualStyleBackColor = true;
@@ -84,7 +86,7 @@
             this.textBoxAddress.Dock = System.Windows.Forms.DockStyle.Top;
             this.textBoxAddress.Location = new System.Drawing.Point(69, 6);
             this.textBoxAddress.Name = "textBoxAddress";
-            this.textBoxAddress.Size = new System.Drawing.Size(271, 20);
+            this.textBoxAddress.Size = new System.Drawing.Size(245, 20);
             this.textBoxAddress.TabIndex = 1;
             this.textBoxAddress.TextChanged += new System.EventHandler(this.textBoxAddress_TextChanged);
             // 
@@ -158,6 +160,11 @@
             this.labelByLine.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.labelByLine.Click += new System.EventHandler(this.labelByLine_Click);
             // 
+            // timerConnection
+            // 
+            this.timerConnection.Enabled = true;
+            this.timerConnection.Tick += new System.EventHandler(this.timerConnection_Tick);
+            // 
             // MainForm
             // 
             this.AcceptButton = this.buttonConnection;
@@ -191,5 +198,6 @@
         private System.Windows.Forms.Label labelByLine;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Timer timerConnection;
     }
 }

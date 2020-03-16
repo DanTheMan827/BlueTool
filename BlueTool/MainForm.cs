@@ -82,33 +82,44 @@ namespace com.DanTheMan827.BlueTool
 
         private void buttonConnection_Click(object sender, EventArgs e)
         {
-            if ((bool)(buttonConnection.Tag ?? false) == false)
+            if (!control.Connected)
             {
-                var address = ParseAddress(textBoxAddress.Text);
-                
-                if (!control.Connected)
-                {
-                    
-                    control.StartListener(address?.Hostname, address?.Port ?? 787, false);
-                }
-                control.ProbeDevices();
-                control.SetScan(true);
-                this.ParentControl?.Invoke(new Action(PopulateMenu));
-                buttonConnection.Tag = true;
-                buttonConnection.Text = "Disconnect";
-                textBoxAddress.Enabled = false;
+                Connect();
             }
             else
             {
-                control?.SetScan(false);
-                control?.StopListener();
-                listView1.Items.Clear();
-                listView1.Groups.Clear();
-
-                buttonConnection.Tag = false;
-                buttonConnection.Text = "Connect";
-                textBoxAddress.Enabled = true;
+                Disconnect();
             }
+        }
+
+        private void Connect()
+        {
+            var address = ParseAddress(textBoxAddress.Text);
+
+            if (!control.Connected)
+            {
+
+                control.StartListener(address?.Hostname, address?.Port ?? 787, false);
+            }
+
+            control.ProbeDevices();
+            control.SetScan(true);
+            this.ParentControl?.Invoke(new Action(PopulateMenu));
+            buttonConnection.Tag = true;
+            buttonConnection.Text = "Disconnect";
+            textBoxAddress.Enabled = false;
+        }
+
+        private void Disconnect()
+        {
+            control?.SetScan(false);
+            control?.StopListener();
+            listView1.Items.Clear();
+            listView1.Groups.Clear();
+
+            buttonConnection.Tag = false;
+            buttonConnection.Text = "Connect";
+            textBoxAddress.Enabled = true;
         }
 
         private void Control_OnData(BluetoothControl.EventType eventType, BluetoothControl.BluetoothDeviceData data, BluetoothControl.BluetoothDeviceData.DataType dataType = BluetoothControl.BluetoothDeviceData.DataType.Undefined)
@@ -294,7 +305,6 @@ namespace com.DanTheMan827.BlueTool
                     (((MenuItemTag)selected.Tag).Handler)(selected, e);
                     listView1.Enabled = true;
                 }
-                selected.Selected = false;
             }
         }
 
@@ -303,6 +313,14 @@ namespace com.DanTheMan827.BlueTool
             buttonConnection.Enabled = ParseAddress(textBoxAddress.Text) != null;
             Settings.Default.Address = textBoxAddress.Text;
             Settings.Default.Save();
+        }
+
+        private void timerConnection_Tick(object sender, EventArgs e)
+        {
+            if (!control.Connected)
+            {
+                Disconnect();
+            }
         }
     }
 }
