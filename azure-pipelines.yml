@@ -37,11 +37,11 @@ steps:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)/BlueTool/bin/Debug'
     includeRootFolder: false
     archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/BlueTool.zip'
     replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    ArtifactName: 'BlueTool'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/BlueTool.zip'
+    ArtifactName: '$(Build.SourceVersion)'
     publishLocation: 'Container'
