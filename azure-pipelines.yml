@@ -6,6 +6,9 @@
 name: $(Build.SourceBranch)-$(date:yyyyMMdd)$(rev:.r)
 
 trigger:
+  tags:
+    include:
+    - v*
   branches:
     include:
     - master
@@ -45,4 +48,14 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/BlueTool.zip'
     ArtifactName: '$(Build.SourceVersion)'
     publishLocation: 'Container'
-
+    
+- task: GitHubRelease@1
+  inputs:
+    gitHubConnection: 'github.com_DanTheMan827'
+    repositoryName: 'DanTheMan827/BlueTool'
+    action: 'create'
+    target: '$(Build.SourceVersion)'
+    tagSource: 'gitTag'
+    tagPattern: 'v*'
+    changeLogCompareToRelease: 'lastFullRelease'
+    changeLogType: 'commitBased'
