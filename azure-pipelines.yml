@@ -48,6 +48,7 @@ steps:
     
 - task: GitHubRelease@1
   inputs:
+    isDraft: true
     gitHubConnection: 'github.com_DanTheMan827'
     repositoryName: 'DanTheMan827/BlueTool'
     action: 'create'
