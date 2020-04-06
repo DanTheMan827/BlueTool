@@ -3,10 +3,9 @@
 # Add steps that publish symbols, save build artifacts, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
 
+name: $(Build.SourceBranch)-$(date:yyyyMMdd)$(rev:.r)
+
 trigger:
-  tags:
-    include:
-    - v*
   branches:
     include:
     - master
@@ -20,6 +19,7 @@ variables:
   buildConfiguration: 'Debug'
 
 steps:
+
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
@@ -45,3 +45,4 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/BlueTool.zip'
     ArtifactName: '$(Build.SourceVersion)'
     publishLocation: 'Container'
+
